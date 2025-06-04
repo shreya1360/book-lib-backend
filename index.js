@@ -1,9 +1,12 @@
+// index.js
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import sequelize from "./config.js";
 import userRoutes from "./routes/user.route.js";
+import bookRoutes from "./routes/book.route.js";
+import borrowRoutes from "./routes/borrow.route.js";
 
 dotenv.config();
 
@@ -22,8 +25,10 @@ app.use(
   })
 );
 
-// routes
+// Routes
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/books", bookRoutes);
+app.use("/api/v1/borrow", borrowRoutes);
 
 (async () => {
   try {
